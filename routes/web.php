@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Validation\ValidationException;
 use Spatie\YamlFrontMatter\YamlFrontMatter;
 use App\Services\MailchimpNewsletter;
+use App\Http\Controllers\AdminPostController;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,6 +37,13 @@ Route::post('register', [RegisterController::class, 'store'])->middleware('guest
 Route::get('login', [SessionsController::class, 'create'])->middleware('guest');
 Route::post('login', [SessionsController::class, 'store'])->middleware('guest');
 Route::post('logout', [SessionsController::class, 'destroy'])->middleware('auth');
+
+Route::middleware('can:admin')->group(function (){
+    Route::get('admin/posts/create', [PostController::class, 'create']);
+    Route::post('admin/posts', [PostController::class, 'store']);
+});
+
+
 
 //Route::get('categories/{category:slug}', function (Category $category){
 //    return view('posts', [

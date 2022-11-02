@@ -43,6 +43,9 @@
             @auth
                 <span class="text-xs font-bold mt-1 uppercase">Welcome, {{auth()->user()->name}}</span>
 
+                @admin
+                <x-dropdown-item class="ml-1 hover:bg-sky-500" href="/admin/posts/create">New Post</x-dropdown-item>
+                @endadmin
                 <form method="POST" action="/logout" class="text-s font-bold text-red-500 ml-6">
                     @csrf
                     <button type="submit" class="">Log Out</button>
