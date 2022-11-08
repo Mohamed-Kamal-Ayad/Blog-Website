@@ -9,5 +9,5 @@
 @endphp
 
 <a {{ $attributes(['class' => $classes]) }}>
-    {{ $slot }}
+    {{$slot}}
 </a>

@@ -7,7 +7,7 @@
         </button>
     </x-slot>
 
-    <x-slot name="cats">
+    <x-slot name="items">
         <x-dropdown-item href="/?{{http_build_query(request()->except('category', 'page'))}}"
                          :active="request()->routeIs('home')">All
         </x-dropdown-item>
